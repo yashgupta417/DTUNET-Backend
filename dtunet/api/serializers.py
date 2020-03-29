@@ -7,7 +7,9 @@ from django.core import exceptions
 class UserSerializer(serializers.ModelSerializer):
     class Meta():
         model=get_user_model()
-        fields='__all__'
+        exclude=['last_login','following','is_active','is_admin']
+        read_only=['is_online','u_id']
+        extra_kwargs = {'password': {'write_only': True}}
 
 class AuthTokenSerializer(serializers.Serializer):
     email = serializers.EmailField()

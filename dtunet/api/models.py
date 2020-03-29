@@ -27,7 +27,7 @@ class UserManager(BaseUserManager):
 #https://docs.djangoproject.com/en/3.0/topics/auth/customizing/
 class User(AbstractBaseUser):
     u_id = models.UUIDField(default=uuid.uuid4, editable=False,primary_key=True)
-    name=models.CharField(max_length=255,null=True,blank=True)
+    name=models.CharField(max_length=255)
     email=models.EmailField(unique=True,max_length=255,null=False,blank=False)
     image=models.ImageField(upload_to="images/",blank=True,null=True)
     label=models.CharField(max_length=255,null=True,blank=True) #student,alumni,faculty,society
